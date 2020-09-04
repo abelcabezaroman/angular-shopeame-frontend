@@ -1,0 +1,24 @@
+<form [formGroup]="formGroupManagementPage">
+  <div>
+    <label for="">Name</label>
+    <input type="text" formControlName="name">
+  </div>
+  <div>
+    <label for="">Description</label>
+    <input type="text" formControlName="description">
+  </div>
+  <div>
+    <label for="">Price</label>
+    <input type="number" formControlName="price">
+  </div>
+  <div>
+    <label for="">Image</label>
+    <input type="text" formControlName="image">
+  </div>
+  <div>
+    <label for="">Stars</label>
+    <input type="number" formControlName="stars">
+  </div>
+
+  <button (click)="addProduct()">Save</button>
+</form>

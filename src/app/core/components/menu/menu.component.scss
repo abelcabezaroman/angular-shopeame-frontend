@@ -1,0 +1,22 @@
+.c-menu {
+  background: #FFC970;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  &__link {
+    font-size: 14px;
+    color: #444444;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    align-items: center;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0 4px;
+    &--active{
+      color: #00579F;
+      background: rgba(235, 242, 255, 0.3);
+
+    }
+  }
+}
