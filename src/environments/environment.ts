@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://my-json-server.typicode.com/franlindebl/shopeame-api-v2/'
+  url: 'http://localhost:3000/'
 };
 
 /*
