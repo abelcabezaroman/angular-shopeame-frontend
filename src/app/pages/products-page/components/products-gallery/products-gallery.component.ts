@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-products-gallery',
@@ -8,10 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductsGalleryComponent implements OnInit {
 
   @Input() products
+  @Output() deleteClickEmitter = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  deleteProduct(idProduct){
+    this.deleteClickEmitter.emit(idProduct);
   }
 
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ManagementPageRoutingModule } from './management-page-routing.module';
 import { ManagementPageComponent } from './management-page.component';
 import { ReactiveFormsModule } from "@angular/forms";
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ReactiveFormsModule } from "@angular/forms";
   imports: [
     CommonModule,
     ManagementPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class ManagementPageModule { }

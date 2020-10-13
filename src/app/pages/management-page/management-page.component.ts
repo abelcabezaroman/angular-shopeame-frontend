@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from "@angular/forms";
-import { ProductsLocalService } from "../../shared/services/local/products-local.service";
+import { ProductsService } from 'src/app/shared/services/products.service';
+import { take } from "rxjs/operators";
 
 @Component({
   selector: 'app-management-page',
@@ -11,7 +12,7 @@ export class ManagementPageComponent implements OnInit {
 
   formGroupManagementPage;
 
-  constructor(private formBuilder: FormBuilder, private productsLocalService: ProductsLocalService) { }
+  constructor(private formBuilder: FormBuilder, private productsService: ProductsService) { }
 
   ngOnInit(): void {
     this.formGroupManagementPage = this.formBuilder.group({
@@ -24,7 +25,7 @@ export class ManagementPageComponent implements OnInit {
   }
 
   addProduct(){
-    this.productsLocalService.addProducts([this.formGroupManagementPage.value])
+    this.productsService.addProduct(this.formGroupManagementPage.value).pipe(take(1)).subscribe(() => {})
   }
 
 }

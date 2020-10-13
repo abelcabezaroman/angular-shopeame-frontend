@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "../../shared/services/products.service";
 import { take } from "rxjs/operators";
-import { ProductsLocalService } from "../../shared/services/local/products-local.service";
 
 @Component({
   selector: 'app-products-page',
@@ -12,19 +11,23 @@ export class ProductsPageComponent implements OnInit {
 
   products = [];
 
-  constructor(private productsService: ProductsService, private productsLocalService: ProductsLocalService) { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit(): void {
-    const productsLocal = this.productsLocalService.getProducts();
-    if (!productsLocal.length) {
-      this.productsService.getProducts().pipe(take(1)).subscribe((products: any) => {
-        this.products = products;
-        this.productsLocalService.addProducts(products);
-      })
-    } else {
-      this.products = productsLocal;
-    }
+    this.getProducts();
 
+  }
+
+  deleteProduct(idProduct) {
+    this.productsService.deleteProduct(idProduct).pipe(take(1)).subscribe(() => {
+      this.getProducts();
+    })
+  }
+
+  getProducts() {
+    this.productsService.getProducts().pipe(take(1)).subscribe((products: any) => {
+      this.products = products;
+    })
   }
 
 }
